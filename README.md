@@ -1,6 +1,7 @@
 # ngRamen2 (work in progress)
 
-[![Build Status](https://secure.travis-ci.org/ng-ramen/ng-ramen-2.svg)](https://travis-ci.org/ng-ramen/ng-ramen-2) [![Coverage Status](https://coveralls.io/repos/ng-ramen/ng-ramen-2/badge.svg?branch=master)](https://coveralls.io/r/ng-ramen/ng-ramen-2?branch=master)
+[![Build Status](https://secure.travis-ci.org/ng-ramen/ng-ramen-2.svg)](https://travis-ci.org/ng-ramen/ng-ramen-2) 
+[![Coverage Status](https://coveralls.io/repos/github/ng-ramen/ng-ramen-2/badge.svg?branch=master)](https://coveralls.io/github/ng-ramen/ng-ramen-2?branch=master)
 
 :ramen: A variety of Ramen made by Angular 2 pipes, components, attribute directives and services
 
