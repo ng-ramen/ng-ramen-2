@@ -1,13 +1,13 @@
 {
-  "name": "lcdchar",
+  "name": "ng2-ramen",
   "version": "0.0.0",
-  "description": "Create custom chars for LCD displays! Built on top of AngularJS 2",
+  "description": "A variety of Ramen made by Angular 2 pipes, components, attribute directives and services",
   "repository": {
     "type": "git",
-    "url": "git@github.com:astagi/lcdchar.git"
+    "url": "git@github.com:ng-ramen/ng2-ramen.git"
   },
   "bugs": {
-    "url": "https://github.com/astagi/lcdchar/issues"
+    "url": "https://github.com/ng-ramen/ng2-ramen/issues"
   },
   "scripts": {
     "start": "http-server -c-1 -o -p 8875 .",
@@ -17,7 +17,7 @@
     "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
     "coverage": "http-server -c-1 -o -p 9875 ./coverage"
   },
-  "homepage": "https://github.com/astagi/lcdchar",
+  "homepage": "https://github.com/ng-ramen/ng2-ramen",
   "devDependencies": {
     "connect": "^3.4.0",
     "del": "^1.2.0",
