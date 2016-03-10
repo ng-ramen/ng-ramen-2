@@ -3,12 +3,15 @@ var karma = require('karma').server;
 var sourcemaps = require('gulp-sourcemaps');
 var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 var exec = require('child_process').exec;
+var typescript = require('gulp-typescript');
 
+var tscConfig = require('./tsconfig.json');
 
 var remapCmd = 'node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage -t html'
 
 var PATHS = {
-    src: 'src/**/*.ts'
+    src: 'src/**/*.ts',
+    demo: 'demo/**/*.ts'
 };
 
 gulp.task('clean', function (done) {
@@ -31,9 +34,19 @@ gulp.task('html-cov', function (cb) {
     });
 });
 
-gulp.task('ts2js', ['clean'], function () {
-    var typescript = require('gulp-typescript');
-    var tscConfig = require('./tsconfig.json');
+gulp.task('demo', ['clean'], function () {
+
+    var tsResult = gulp
+        .src(PATHS.demo)
+        .pipe(sourcemaps.init())
+        .pipe(typescript(tscConfig.compilerOptions));
+
+    return tsResult.js.pipe(sourcemaps.write('./', {
+            sourceRoot: __dirname + '/'
+        })).pipe(gulp.dest('.'));
+});
+
+gulp.task('dist', ['clean'], function () {
 
     var tsResult = gulp
         .src(PATHS.src)
@@ -43,6 +56,18 @@ gulp.task('ts2js', ['clean'], function () {
     return tsResult.js.pipe(sourcemaps.write('./', {
             sourceRoot: __dirname + '/src'
         })).pipe(gulp.dest('dist'));
+});
+
+gulp.task('ts2js', ['clean'], function () {
+
+    var tsResult = gulp
+        .src(PATHS.src)
+        .pipe(sourcemaps.init())
+        .pipe(typescript(tscConfig.compilerOptions));
+
+    return tsResult.js.pipe(sourcemaps.write('./', {
+            sourceRoot: __dirname + '/src'
+        })).pipe(gulp.dest('src'));
 });
 
 gulp.task('play', ['ts2js'], function () {
@@ -61,4 +86,4 @@ gulp.task('play', ['ts2js'], function () {
     });
 });
 
-gulp.task('default', ['play']);
+gulp.task('default', ['ts2js']);
